@@ -17,3 +17,20 @@ def recommend(movie):
 
     recommended_movies = [movies.iloc[i[0]].title for i in movies_list]
     return recommended_movies
+
+# Function to search for actors or movies
+def search_actor_or_movie(input_text, search_type):
+    if search_type == "Actor":
+        prompt = (
+            f"Provide details for actor '{input_text}':\n"
+            f"- Name\n- Birthdate\n- Movies worked in"
+        )
+    else:
+        prompt = (
+            f"Provide details for the movie '{input_text}':\n"
+            f"- Name\n- Release date\n- Director\n- Genre/Theme\n- Actors involved\n"
+            f"- Short description"
+        )
+    response = model.generate_content(prompt)
+    return response.text
+
