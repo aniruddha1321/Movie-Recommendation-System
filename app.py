@@ -34,3 +34,17 @@ def search_actor_or_movie(input_text, search_type):
     response = model.generate_content(prompt)
     return response.text
 
+# Load data for recommendation system
+with open('movies_dict.pkl', 'rb') as file:
+    movies_dict = pickle.load(file)
+movies = pd.DataFrame(movies_dict)
+
+with open('similarity.pkl', 'rb') as file:
+    similarity = pickle.load(file)
+
+# Configure Streamlit page
+st.set_page_config(
+    page_title="Entertainment Insights",
+    page_icon="🎬",
+    layout="wide"
+)
