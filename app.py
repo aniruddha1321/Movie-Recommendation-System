@@ -70,3 +70,21 @@ selected = option_menu(
     }
 )
 
+# Page: Movie Recommendation System
+if selected == "Movie Recommendations":
+    # st.header("🎬 Movie Recommendation System")
+    st.markdown("<h1 style='text-align: center;'>Movie Recommendation System</h1>", unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns([1, 2, 1])  # Center content
+    with col2:
+        st.text("Looking for your next great watch? Select a movie, and we’ll recommend similar films you might enjoy. Dive into a world of endless entertainment! 🍿")
+        selected_movie_name = st.selectbox(
+            "Select a movie to get recommendations:",
+            movies['title'].values,
+            key="movie_select",
+        )
+        if st.button("Recommend", key="recommend"):
+            recommendations = recommend(selected_movie_name)
+            st.subheader("Recommended Movies:")
+            for movie in recommendations:
+                st.write(f"🎬 {movie}")
