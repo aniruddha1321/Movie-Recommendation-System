@@ -88,3 +88,43 @@ if selected == "Movie Recommendations":
             st.subheader("Recommended Movies:")
             for movie in recommendations:
                 st.write(f"🎬 {movie}")
+
+# Page: Actor and Movie Search
+elif selected == "Actor and Movie Search":
+    st.markdown("<h1 style='text-align: center;'>Actor & Movie Search</h1>", unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns([1, 2, 1])  # Center content
+    with col2:
+        # search_type = st.radio("Search for:", ["Actor", "Movie"], horizontal=True, key="search_type")
+        st.markdown("<div class='centered'>", unsafe_allow_html=True)
+
+
+        listTabs = ["Actors", "Movies"] #1
+        # st.tabs(listTabs)
+        whitespace = 21
+        tabs = st.tabs([s.center(whitespace, "\u2001") for s in listTabs])
+        tab1, tab2 = st.tabs(["Actors", "Movies"]) 
+
+        with tab1:
+            st.subheader("Search for an Actor")
+            search_query = st.text_input("Enter Actor Name:", key="actor_search_input")
+
+            if st.button("Search", key="actor_search"):
+                if search_query:
+                    result = search_actor_or_movie(search_query, "Actor")
+                    st.subheader("Search Results:")
+                    st.write(result)
+                else:
+                    st.warning("Please enter a valid actor name.")
+
+        with tab2:
+            st.subheader("Search for a Movie")
+            search_query = st.text_input("Enter Movie Name:", key="movie_search_input")
+
+            if st.button("Search", key="movie_search"):
+                if search_query:
+                    result = search_actor_or_movie(search_query, "Movie")
+                    st.subheader("Search Results:")
+                    st.write(result)
+                else:
+                    st.warning("Please enter a valid movie name.")
