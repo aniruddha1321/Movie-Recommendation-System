@@ -48,3 +48,25 @@ st.set_page_config(
     page_icon="🎬",
     layout="wide"
 )
+
+# Navigation Bar
+selected = option_menu(
+    menu_title=None,
+    options=["Movie Recommendations", "Actor and Movie Search"],
+    icons=["film", "search"],
+    menu_icon="cast",
+    default_index=0,
+    orientation="horizontal",
+    styles={
+        "container": {"padding": "0!important"},
+        "icon": {"color": "blue", "font-size": "25px"},
+        "nav-link": {
+            "font-size": "16px",
+            "text-align": "center",
+            "margin": "3px",
+            "--hover-color": "#eee",
+        },
+        "nav-link-selected": {"background-color": "#2c3e50"},
+    }
+)
+
